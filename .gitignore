@@ -22,6 +22,7 @@ eval_workspace/
 FILTER*/
 input_images*/
 *.gradio/
+da3_streaming/scripts/weights
 
 # Jupyter notebooks
 .ipynb_checkpoints
