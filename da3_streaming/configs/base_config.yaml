@@ -1,11 +1,11 @@
 Weights:
-  DA3: './weights/model.safetensors'
-  DA3_CONFIG: './weights/config.json'
-  SALAD: './weights/dino_salad.ckpt'
+  DA3: ./submodules/depth-anything-3/da3_streaming/scripts/weights/model.safetensors #'./weights/model.safetensors'
+  DA3_CONFIG: ./submodules/depth-anything-3/da3_streaming/scripts/weights/config.json  #'./weights/config.json'
+  SALAD: ./submodules/depth-anything-3/da3_streaming/scripts/weights/dino_salad.ckpt #'./weights/dino_salad.ckpt'
 
 Model:
-  chunk_size: 120
-  overlap: 60
+  chunk_size: 60
+  overlap: 5
   loop_chunk_size: 20 # imgs of loop chunk = 2 * loop_chunk_size
   loop_enable: True
   useDBoW: False
