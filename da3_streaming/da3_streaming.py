@@ -14,18 +14,31 @@
 #
 # Adapted from [VGGT-Long](https://github.com/DengKaiCQ/VGGT-Long)
 
+import os
+import sys
+
+# MUST be set before importing torch or any CUDA library
+cuda_device = os.environ.get("CUDA_VISIBLE_DEVICES", "0")
+os.environ["CUDA_VISIBLE_DEVICES"] = cuda_device
+print(f"Setting CUDA_VISIBLE_DEVICES={cuda_device} before torch import", file=sys.stderr)
+
 import argparse
 import gc
 import glob
 import json
-import os
 import shutil
-import sys
 from datetime import datetime
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+
+print(f"PyTorch sees {torch.cuda.device_count()} GPU(s)", file=sys.stderr)
+if torch.cuda.is_available():
+    print(f"GPU 0 name: {torch.cuda.get_device_name(0)}", file=sys.stderr)
+    print(f"GPU 0 memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB", file=sys.stderr)
+
+
 from loop_utils.alignment_torch import (
     apply_sim3_direct_torch,
     depth_to_point_cloud_optimized_torch,
